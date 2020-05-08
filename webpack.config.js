@@ -1,7 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-;
+// process.env.NODE_ENV ='production'
 module.exports = {
     entry: {
         index: './src/pages/index.js'
@@ -25,7 +25,16 @@ module.exports = {
                             esModule: true,
                         },
                     },
-                    'css-loader'
+                    'css-loader',
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            ident: 'postcss',
+                            plugins: () => [
+                                require('postcss-preset-env')()
+                            ]
+                        }
+                    },
                 ]
 
             },
@@ -40,7 +49,31 @@ module.exports = {
                         },
                     },
                     'css-loader',
-                    'less-loader'
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            ident: 'postcss',
+                            plugins: () => [
+                                require('postcss-preset-env')()
+                            ]
+                        }
+                    },
+                    'less-loader',
+                ]
+            },
+
+            //解析css、less等文件中img的url地址
+            {
+               test:/\.(png|jpg|gif|jpeg)$/i,
+                use:[
+                    {
+                        loader:'url-loader',
+                        options: {
+                            limit:1024*8,//小于这个数值则已base64的方式存在
+                            name:'[name].[hash:5].[ext]',
+                            publicPath: '../',
+                        }
+                    }
                 ]
             },
         ]
@@ -51,7 +84,9 @@ module.exports = {
             template: './public/index.html'
         }),
 
-        new MiniCssExtractPlugin('index.css')
+        new MiniCssExtractPlugin({
+            filename: 'css/build.css'
+        })
 
     ],
 
