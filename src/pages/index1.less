@@ -1,14 +1,17 @@
 .box{
-  height:200px;
+  height:300px;
   width:200px;
   background: #000000;
   color:#fff;
   position: relative;
+  backface-visibility: hidden;
+  display: flex;
   &-cover{
     height:100px;
     width:100px;
     background: #F40;
     position: absolute;
     transform: rotate(-30deg);
+    background: url("./demo.jpg") no-repeat center center;
   }
 }
