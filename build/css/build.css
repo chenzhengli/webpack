@@ -1,1 +1,0 @@
-body,html{height:100%;width:100%;background:#f40}.box{height:300px;width:200px;background:pink;color:#fff;position:relative;-webkit-backface-visibility:hidden;backface-visibility:hidden;display:flex}.box-cover{height:100px;width:100px;background:#f40;position:absolute;transform:rotate(-30deg);background:url(imgs/demo.95138.jpg) no-repeat 50%}
