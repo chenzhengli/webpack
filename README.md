@@ -49,7 +49,10 @@
 
 ### 性能优化
 - 开发环境:
-    1.css要用style-loader，因为在启用HRM热模块更新功能时，在style-loader中内部已经实现了
+    1. css要用style-loader，因为在启用HRM热模块更新功能时，在style-loader中内部已经实现
+    2. js文件,默认不能使用HRM功能--->
+    3. html文件不能也不能使用HRM功能(不需要做HRM功能)
+    解决:
 
 
 

@@ -1,11 +1,11 @@
 import './index.css'
 import './index1.less'
 import icon from '../icon/abc.ico'
-import foo from './demo'
+import {demo,sub} from './demo'
 
 console.log('index.js被加载了----->');
 
-foo();
+demo();
 
 const path = require('path');
 console.log(path.resolve(__dirname,'./dist'))
